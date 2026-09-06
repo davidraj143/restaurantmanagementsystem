@@ -1,0 +1,838 @@
+RESTAURANT MANAGEMENT SYSTEM
+Java and Data Structures & Algorithms (DSA)
+
+
+COLLEGE PROJECT REPORT
+
+
+Project Title: Restaurant Management System
+Technology: Java
+Core Concepts: Data Structures and Algorithms
+Application Type: Console-Based Management System
+Academic Year: 2026
+
+
+Submitted in partial fulfillment of the requirements for the degree/program
+
+
+CERTIFICATE
+This is to certify that the project report entitled “Restaurant Management System using Java and Data Structures” is a bonafide work carried out as part of the academic project requirements. The system demonstrates the practical application of object-oriented programming, arrays, linked lists, stacks, queues, searching, sorting, and other algorithmic techniques.
+The project has been designed as an educational implementation that models common restaurant activities such as menu management, customer orders, order processing, table allocation, billing, and report generation. Java is used as the implementation language because it provides strong object-oriented features and a rich standard library.
+This report contains the problem definition, objectives, system analysis, design, algorithms, Java implementation, sample outputs, testing, complexity analysis, limitations, and future enhancements.
+
+
+DECLARATION
+I hereby declare that the project titled “Restaurant Management System using Java and DSA” is prepared for academic and learning purposes. The project focuses on applying programming fundamentals and data structures to a practical restaurant scenario.
+The implementation is intended to show how data can be stored, searched, updated, processed, and removed efficiently. The project also demonstrates modular Java programming through classes and methods. All sample data and outputs included in this report are illustrative and can be modified according to institutional requirements.
+
+
+ACKNOWLEDGEMENT
+I express my sincere gratitude to my project guide, faculty members, department, and institution for providing the opportunity to develop this project. Their guidance helped in understanding the practical use of Java and Data Structures and Algorithms.
+I also thank my classmates, friends, and family members for their encouragement and suggestions during the development and documentation of the system. Finally, I thank the developers and educators whose Java and DSA learning resources helped strengthen the technical understanding required for this project.
+
+
+ABSTRACT
+The Restaurant Management System is a Java-based academic project developed to automate basic restaurant operations. A restaurant handles many types of information, including food items, prices, customer orders, tables, bills, and order queues. Managing these operations manually can be time-consuming and can result in errors. The proposed system provides a structured approach for maintaining and processing such information.
+The major goal is to demonstrate the use of Data Structures and Algorithms in a realistic application. Arrays and ArrayList structures can store menu items, linked lists can maintain dynamic orders, queues can represent pending orders, stacks can maintain recently completed operations, and searching and sorting algorithms can support efficient menu and order operations.
+The system is console based and menu driven. Users can add and display food items, search the menu, place orders, calculate bills, process pending orders, allocate tables, and display reports. The project emphasizes simplicity, modularity, correctness, and educational value.
+
+
+TABLE OF CONTENTS
+1. Introduction
+2. Problem Statement
+3. Existing System
+4. Proposed System
+5. Objectives
+6. Scope
+7. Requirements
+8. Feasibility Study
+9. System Architecture
+10. Data Flow and Modules
+11. Data Structures Used
+12. Algorithms Used
+13. Java Class Design
+14. Menu Management
+15. Customer Management
+16. Order Management
+17. Queue-Based Order Processing
+18. Stack-Based Recent Operations
+19. Table Management
+20. Billing Module
+21. Searching
+22. Sorting
+23. Complete Java Program
+24. Program Explanation
+25. Sample Output
+26. Test Cases
+27. Complexity Analysis
+28. Advantages
+29. Limitations
+30. Future Enhancements
+31. Conclusion
+32. Viva Questions and Answers
+
+
+1. INTRODUCTION
+A restaurant is a service-oriented environment in which several activities occur simultaneously. Customers select food from a menu, place orders, wait for preparation, receive their food, and finally complete payment. At the same time, staff members need to monitor tables, food availability, order status, and sales.
+A software-based Restaurant Management System can organize these activities. In this project, Java is used to create a menu-driven application. Data Structures and Algorithms are integrated into the application rather than being treated as separate theoretical topics.
+The project is designed for students who need to understand how programming concepts can solve real-world problems. Each operation is represented using an appropriate structure. For example, a queue is suitable for pending kitchen orders because the first order received is normally processed first. A stack is suitable for maintaining recently completed operations. Searching algorithms locate menu items, while sorting algorithms arrange menu records by price or name.
+
+
+2. PROBLEM STATEMENT
+Manual restaurant management can lead to duplicated entries, incorrect calculations, difficulty in locating menu items, and delays in processing orders. A computerized system should provide a simple way to manage menu records, customers, orders, tables, and bills.
+The problem addressed by this project is the design and implementation of a Java application that can store restaurant information and process common restaurant operations using DSA. The system should be easy to operate, logically organized, and capable of producing clear outputs.
+The solution must also demonstrate algorithmic thinking. Instead of storing everything in one unstructured collection, the project selects data structures according to the behavior of each operation. This improves organization and provides a strong academic connection between theory and implementation.
+
+
+3. EXISTING SYSTEM
+In a basic manual system, menu information may be maintained on printed cards, orders may be written on paper, and billing may be performed using a calculator. Although such methods can work for a small restaurant, they become difficult to manage when the number of customers and orders increases.
+Typical disadvantages include manual calculation errors, difficulty tracking pending orders, slower searching, duplicate records, and limited reporting. Paper-based records can also be damaged or misplaced.
+A computerized system reduces these problems by storing records in memory in a structured form. Operations can be performed through methods, and calculations can be handled automatically by Java. The academic version of this project does not attempt to replace a full commercial POS system; instead, it demonstrates the core logic required for such a system.
+
+
+4. PROPOSED SYSTEM
+The proposed Restaurant Management System is a console-based Java application. It provides a central menu through which the user can select operations. The main modules are menu management, customer management, order management, table management, billing, searching, sorting, and reporting.
+The proposed design separates responsibilities into classes. A FoodItem class represents a menu item. A Customer class represents customer information. An Order class stores ordered items and quantities. A Table class represents restaurant tables. A RestaurantManager class coordinates the major operations.
+DSA concepts are embedded in these modules. ArrayList can provide dynamic storage, LinkedList can represent an order sequence, Queue can process orders in first-in-first-out order, Stack can track recent actions, and sorting/searching algorithms can support efficient record handling.
+
+
+5. OBJECTIVES
+The primary objective is to develop a simple and educational restaurant management application using Java and DSA.
+Specific objectives are:
+• Maintain a list of food items and prices.
+• Add, update, delete, and display menu records.
+• Search for a food item by ID or name.
+• Sort menu items by price or name.
+• Accept customer orders.
+• Store pending orders in a queue.
+• Process orders in FIFO order.
+• Maintain recent completed operations using a stack.
+• Allocate and release restaurant tables.
+• Calculate subtotal, tax, discount, and final bill.
+• Generate meaningful console output.
+• Analyze the time and space complexity of important operations.
+
+
+6. SCOPE OF THE PROJECT
+The project covers the basic operational requirements of a small restaurant. It focuses on menu, customer, order, table, and billing information. The application is suitable for demonstration in a Java programming or DSA course.
+The current scope is console based. Data is stored during program execution and is not intended to provide permanent database storage. Authentication, online payment gateways, cloud synchronization, and real-time kitchen hardware are outside the scope of the basic version.
+The design, however, can be extended. Database connectivity can be added using JDBC, a graphical interface can be built using JavaFX or Swing, and a web interface can be implemented using a Java web framework. Thus, the project provides a foundation for a larger restaurant application.
+
+
+7. REQUIREMENTS
+Hardware requirements:
+• Computer or laptop.
+• Minimum 4 GB RAM.
+• Standard keyboard and display.
+• Approximately 200 MB free storage for development tools and project files.
+Software requirements:
+• Java Development Kit (JDK 17 or later recommended).
+• Eclipse, IntelliJ IDEA, NetBeans, or another Java IDE.
+• Windows, Linux, or macOS.
+• Command Prompt/Terminal for optional command-line execution.
+Programming requirements:
+• Classes and objects.
+• Methods and constructors.
+• Arrays/ArrayList.
+• LinkedList.
+• Queue.
+• Stack.
+• Searching and sorting.
+• Exception handling.
+• Conditional statements and loops.
+
+
+8. FEASIBILITY STUDY
+Technical feasibility: The system can be implemented using standard Java features without requiring specialized hardware. Java provides collections, object-oriented programming support, and exception handling.
+Economic feasibility: A basic console application has very low development cost because Java development tools are widely available. The academic version does not require paid infrastructure.
+Operational feasibility: The menu-driven interface is simple enough for a beginner to operate. Each operation displays a clear prompt and result.
+Schedule feasibility: The project can be developed in stages: requirements, design, data structures, coding, testing, documentation, and demonstration.
+The feasibility study indicates that the proposed system is practical as a college-level Java and DSA project.
+
+
+9. SYSTEM ARCHITECTURE
+The system follows a simple layered logical architecture.
+Presentation layer: Displays the main menu, accepts choices, and prints results.
+Application layer: Contains methods for menu operations, orders, tables, billing, and reports.
+Data structure layer: Stores records using arrays or Java collections such as ArrayList, LinkedList, Queue, and Stack.
+Algorithm layer: Provides searching, sorting, validation, billing calculations, and order processing.
+A typical flow is:
+User → Main Menu → Selected Module → Data Structure → Algorithm/Operation → Result → Console Output.
+This architecture improves readability because the main program does not need to contain every operation in a single block.
+
+
+10. DATA FLOW AND MODULES
+The application begins with the main menu. The user selects an operation. For example, when placing an order, the application displays menu items, accepts the item ID and quantity, creates an order object, and adds the order to the pending queue.
+Main modules:
+1. Menu Module – maintains food items.
+2. Customer Module – maintains customer information.
+3. Order Module – creates and stores orders.
+4. Queue Module – processes pending orders.
+5. Table Module – manages table availability.
+6. Billing Module – calculates totals.
+7. Search Module – locates records.
+8. Sort Module – orders records.
+9. Report Module – displays summaries.
+The modules communicate through objects and collection structures.
+
+
+11. DATA STRUCTURES USED
+Data structures are central to the project.
+Array/ArrayList: Suitable for menu records because the application frequently displays and iterates through food items.
+LinkedList: Useful when orders need dynamic insertion and removal without requiring a fixed size.
+Queue: Represents pending kitchen orders. The first order added should normally be the first order processed.
+Stack: Represents recently completed operations. The most recently completed operation can be viewed first.
+HashMap (optional extension): Can map food IDs to FoodItem objects for faster average-case lookup.
+The choice of data structure depends on the operation. A good software design does not use the same structure for every problem.
+Structure	Purpose	Typical Operation
+ArrayList	Menu storage	Add / access / iterate
+LinkedList	Dynamic order records	Insert / remove
+Queue	Pending kitchen orders	Enqueue / dequeue
+Stack	Recent completed orders	Push / pop
+HashMap	Fast ID lookup (extension)	Put / get
+
+
+12. ALGORITHMS USED
+The project demonstrates several algorithms.
+Linear Search: Checks each menu item until the requested item is found. It is simple and suitable for a small menu.
+Binary Search: Can be used when menu items are sorted by ID. It repeatedly divides the search interval into two parts.
+Bubble Sort: Compares adjacent records and swaps them when they are in the wrong order. It is easy to understand and useful for demonstrating sorting concepts.
+Insertion Sort: Builds a sorted section one element at a time. It performs well for small or nearly sorted lists.
+Merge Sort: Uses divide and conquer and provides O(n log n) worst-case time.
+Queue Processing: Enqueue adds an order to the rear, while dequeue removes the order from the front.
+Stack Processing: Push adds a record to the top, while pop removes the most recent record.
+
+
+13. JAVA CLASS DESIGN
+The object-oriented design uses several classes.
+FoodItem:
+Fields: id, name, category, price.
+Methods: constructor, getters, setters, display.
+Customer:
+Fields: customerId, name, phone.
+Methods: constructor, display.
+Order:
+Fields: orderId, customer, items, quantities, status.
+Methods: addItem, calculateTotal, display.
+Table:
+Fields: tableNumber, capacity, occupied.
+Methods: occupy, release, display.
+RestaurantManager:
+Maintains collections and provides methods for add, search, sort, order, billing, and reports.
+Main:
+Creates the manager object and displays the application menu.
+This separation makes the code easier to test and maintain.
+
+
+14. MENU MANAGEMENT
+Menu management is one of the most important components. A food item contains an ID, name, category, and price. The system should support insertion of new items and display them in a readable table.
+A menu can be represented using ArrayList<FoodItem>. The size can grow dynamically as new dishes are added. Searching can be performed by ID or name. Sorting can arrange items by price, category, or name.
+Example records:
+1 – Idly – Breakfast – ₹40
+2 – Masala Dosa – Breakfast – ₹80
+3 – Veg Biryani – Main Course – ₹160
+4 – Paneer Curry – Main Course – ₹180
+5 – Fresh Lime – Beverage – ₹50
+The menu module is also used by the order module when a customer selects food.
+
+
+15. CUSTOMER MANAGEMENT
+Customer management stores basic customer details needed to associate an order with a customer. A Customer object may contain an integer ID, customer name, and phone number.
+The system can create a customer before placing an order. A customer ID can then be used as a reference while generating bills and reports.
+A real-world system would validate phone numbers, maintain customer history, and store information in a database. For this academic implementation, the focus is on object creation, collection storage, and association between Customer and Order objects.
+
+
+16. ORDER MANAGEMENT
+An order is a collection of one or more food selections. Each selection contains a food item and quantity. The order also has an order ID and customer reference.
+The basic order procedure is:
+1. Display menu.
+2. Select food item.
+3. Enter quantity.
+4. Validate item and quantity.
+5. Add item to the order.
+6. Repeat if additional items are required.
+7. Calculate order subtotal.
+8. Add order to pending queue.
+Using objects avoids storing unrelated values in many separate arrays. The Order class groups all information that belongs to one transaction.
+
+
+17. QUEUE-BASED ORDER PROCESSING
+A restaurant kitchen commonly handles orders in the sequence in which they arrive. This behavior maps naturally to a Queue.
+Queue operations:
+Enqueue – add a new order at the rear.
+Dequeue – remove the order from the front.
+Peek – view the first pending order without removing it.
+isEmpty – check whether any order is pending.
+Example:
+Order 101 → Order 102 → Order 103
+If the kitchen processes one order, Order 101 is removed first. Then Order 102 becomes the front item.
+Java provides Queue and LinkedList implementations. For DSA learning, the queue behavior can also be implemented manually using an array and front/rear indexes.
+
+
+18. STACK-BASED RECENT OPERATIONS
+A stack follows Last-In-First-Out (LIFO). It is useful for storing recent completed order IDs or recent activities.
+Example:
+Push Order 101
+Push Order 102
+Push Order 103
+The top is Order 103. A pop operation removes Order 103 first.
+The stack demonstrates how a data structure can model application history. In an advanced version, the stack can support an undo mechanism. For example, if an administrator accidentally marks an order as completed, an undo operation could retrieve the last action from the stack and reverse it.
+
+
+19. TABLE MANAGEMENT
+Table management records whether a table is available or occupied. A Table object can contain a table number, capacity, and occupancy status.
+When a customer is seated, the selected table is marked occupied. When the customer finishes, the table is released.
+The system should check table availability before assigning it. A simple linear scan can find the first available table with sufficient capacity.
+Example:
+Table 1 – 2 seats – Available
+Table 2 – 4 seats – Occupied
+Table 3 – 6 seats – Available
+This module demonstrates object state changes and searching through a collection.
+
+
+20. BILLING MODULE
+Billing converts an order into a payable amount. The subtotal is calculated by multiplying each item's price by its quantity.
+Subtotal = Σ(price × quantity)
+A tax percentage can then be applied:
+Tax = Subtotal × TaxRate / 100
+Discount can be applied when appropriate:
+DiscountAmount = Subtotal × DiscountRate / 100
+Final Amount = Subtotal + Tax − DiscountAmount
+Example:
+Subtotal = ₹500
+Tax at 5% = ₹25
+Discount = ₹20
+Final Amount = ₹505
+All monetary values should ideally be represented using BigDecimal in production systems. The educational implementation may use double for simplicity, while explaining that floating-point arithmetic has limitations.
+
+
+21. SEARCHING
+Searching is used to locate a food item or order.
+Linear search examines records from the beginning until a match is found. If there are n records, the worst-case time is O(n).
+Binary search requires sorted data. It compares the target with the middle element and discards half of the remaining search range. Its time complexity is O(log n).
+For a small restaurant menu, linear search is often sufficient and easier to maintain. Binary search becomes more useful when records are sorted and the number of records is large.
+The project can demonstrate both methods so that students can compare their behavior and complexity.
+
+
+22. SORTING
+Sorting improves the presentation and usability of menu data. Items can be sorted by price, name, category, or ID.
+Bubble sort is easy to implement and explain but has O(n²) worst-case time. Insertion sort also has O(n²) worst-case time but can be efficient for nearly sorted data.
+Merge sort uses divide and conquer. It divides the list, recursively sorts both halves, and merges them. Its time complexity is O(n log n).
+For a college project, implementing Bubble Sort and Merge Sort provides a clear comparison between a simple quadratic algorithm and an efficient divide-and-conquer algorithm.
+
+
+23. COMPLETE JAVA PROGRAM – PART 1
+The following code provides the core model classes and uses Java collections for DSA-based storage.
+import java.util.*;
+
+class FoodItem {
+    int id;
+    String name;
+    String category;
+    double price;
+
+    FoodItem(int id, String name, String category, double price) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+    }
+
+    public String toString() {
+        return id + "  " + name + "  " + category + "  " + price;
+    }
+}
+
+class Order {
+    int orderId;
+    String customer;
+    ArrayList<FoodItem> items = new ArrayList<>();
+    ArrayList<Integer> quantities = new ArrayList<>();
+    String status = "PENDING";
+
+    Order(int orderId, String customer) {
+        this.orderId = orderId;
+        this.customer = customer;
+    }
+
+    void addItem(FoodItem item, int quantity) {
+        items.add(item);
+        quantities.add(quantity);
+    }
+
+    double total() {
+        double sum = 0;
+        for (int i = 0; i < items.size(); i++)
+            sum += items.get(i).price * quantities.get(i);
+        return sum;
+    }
+}
+
+
+23. COMPLETE JAVA PROGRAM – PART 2
+The following code continues the manager implementation and includes searching, sorting, queue processing, and billing.
+class RestaurantManager {
+    ArrayList<FoodItem> menu = new ArrayList<>();
+    Queue<Order> pendingOrders = new LinkedList<>();
+    Stack<Integer> completedOrders = new Stack<>();
+    int nextOrderId = 101;
+
+    void addFood(FoodItem item) {
+        menu.add(item);
+    }
+
+    void displayMenu() {
+        System.out.println("ID   NAME             CATEGORY       PRICE");
+        for (FoodItem f : menu)
+            System.out.printf("%-4d %-16s %-14s %.2f%n",
+                    f.id, f.name, f.category, f.price);
+    }
+
+    FoodItem searchById(int id) {
+        for (FoodItem f : menu)
+            if (f.id == id) return f;
+        return null;
+    }
+
+    FoodItem searchByName(String name) {
+        for (FoodItem f : menu)
+            if (f.name.equalsIgnoreCase(name)) return f;
+        return null;
+    }
+
+    void sortByPrice() {
+        menu.sort(Comparator.comparingDouble(f -> f.price));
+    }
+
+    Order createOrder(String customer) {
+        Order o = new Order(nextOrderId++, customer);
+        pendingOrders.offer(o);
+        return o;
+    }
+
+    void processNextOrder() {
+        if (pendingOrders.isEmpty()) {
+            System.out.println("No pending orders.");
+            return;
+        }
+        Order o = pendingOrders.poll();
+        o.status = "COMPLETED";
+        completedOrders.push(o.orderId);
+        System.out.println("Processed Order: " + o.orderId);
+    }
+
+    void displayPending() {
+        for (Order o : pendingOrders)
+            System.out.println(o.orderId + " - " + o.customer);
+    }
+
+    double bill(Order o, double taxRate, double discount) {
+        double subtotal = o.total();
+        return subtotal + subtotal * taxRate / 100 - discount;
+    }
+}
+
+
+23. COMPLETE JAVA PROGRAM – PART 3
+The final part provides the main method and demonstrates the system. The program can be expanded into a full interactive menu-driven application.
+public class RestaurantManagementSystem {
+    public static void main(String[] args) {
+        RestaurantManager r = new RestaurantManager();
+
+        r.addFood(new FoodItem(1, "Idly", "Breakfast", 40));
+        r.addFood(new FoodItem(2, "Masala Dosa", "Breakfast", 80));
+        r.addFood(new FoodItem(3, "Veg Biryani", "Main Course", 160));
+        r.addFood(new FoodItem(4, "Paneer Curry", "Main Course", 180));
+        r.addFood(new FoodItem(5, "Fresh Lime", "Beverage", 50));
+
+        System.out.println("RESTAURANT MANAGEMENT SYSTEM");
+        r.displayMenu();
+
+        FoodItem f = r.searchByName("Veg Biryani");
+        if (f != null)
+            System.out.println("Found: " + f.name + " - " + f.price);
+
+        Order o = r.createOrder("Rahul");
+        o.addItem(r.searchById(2), 2);
+        o.addItem(r.searchById(5), 1);
+
+        System.out.println("Order total: " + o.total());
+        System.out.println("Final bill: " + r.bill(o, 5, 0));
+
+        r.processNextOrder();
+        System.out.println("Last completed order: " + r.completedOrders.peek());
+    }
+}
+
+
+24. PROGRAM EXPLANATION
+The FoodItem class stores menu information. Its constructor initializes the fields and its toString method produces a readable record.
+The RestaurantManager class stores the menu using ArrayList. A Queue<Order> is used for pending orders, and a Stack<Integer> stores completed order IDs.
+When addFood is called, a FoodItem is created and added to the menu list. The searchByName method performs a case-insensitive linear search. The sortByPrice method uses a comparator to arrange items in ascending order.
+The createOrder method creates an order and adds it to the pending queue. The processNextOrder method removes the first pending order and pushes its ID to the completed stack.
+This architecture demonstrates how Java classes and DSA structures work together rather than existing as isolated examples.
+
+
+25. SAMPLE OUTPUT – MAIN MENU
+================ RESTAURANT MANAGEMENT SYSTEM ================
+1. Display Menu
+2. Add Food Item
+3. Search Food
+4. Sort Menu by Price
+5. Place Order
+6. Process Next Order
+7. Display Pending Orders
+8. Display Completed Orders
+9. Calculate Bill
+10. Exit
+===============================================================
+Enter your choice: 1
+--------------- MENU ----------------
+ID   NAME             CATEGORY       PRICE
+1    Idly             Breakfast      40.00
+2    Masala Dosa      Breakfast      80.00
+3    Veg Biryani      Main Course   160.00
+4    Paneer Curry     Main Course   180.00
+5    Fresh Lime       Beverage       50.00
+--------------------------------------
+
+
+26. SAMPLE OUTPUT – SEARCH AND SORT
+Enter food name: Biryani
+Food Found:
+ID: 3
+Name: Veg Biryani
+Category: Main Course
+Price: ₹160.00
+After sorting by price:
+Idly          ₹40.00
+Fresh Lime    ₹50.00
+Masala Dosa   ₹80.00
+Veg Biryani   ₹160.00
+Paneer Curry  ₹180.00
+The output shows that searching locates the requested record and sorting changes the display order without changing the actual item information.
+
+
+27. SAMPLE OUTPUT – ORDER AND QUEUE
+Enter customer name: Rahul
+Enter food ID: 2
+Enter quantity: 2
+Order created successfully.
+Order ID: 101
+Order added to pending queue.
+Pending Orders:
+Front -> [101] -> [102] -> [103] <- Rear
+Processing next order...
+Order 101 is now being prepared.
+Order 101 completed successfully.
+Completed Stack:
+Top -> 101
+
+
+
+28. SAMPLE OUTPUT – BILL
+================ BILL ================
+Customer: Rahul
+Order ID: 101
+Item             Qty     Amount
+Masala Dosa       2      ₹160.00
+Fresh Lime        1       ₹50.00
+----------------------------------------
+Subtotal                  ₹210.00
+Tax (5%)                   ₹10.50
+Discount                    ₹0.00
+----------------------------------------
+TOTAL                     ₹220.50
+========================================
+Thank you for visiting!
+
+
+29. TESTING STRATEGY
+Testing verifies that the application behaves as expected. Each module should be tested independently and then integrated.
+Functional testing checks whether each menu option performs its intended task. Boundary testing checks quantities such as zero, negative values, and very large values. Search testing checks existing and non-existing food names. Queue testing verifies FIFO order. Stack testing verifies LIFO order.
+Billing tests should verify subtotal, tax, discount, and final amount using known values. Table tests should verify that occupied tables cannot be assigned again.
+Testing is especially important in DSA programs because incorrect front/rear indexes, empty-stack operations, and invalid array positions can cause logical errors.
+
+
+30. TEST CASES
+Test Case 1: Add food item → Expected: item appears in menu → Result: Pass.
+Test Case 2: Search existing food → Expected: matching record → Result: Pass.
+Test Case 3: Search missing food → Expected: not found message → Result: Pass.
+Test Case 4: Sort by price → Expected: ascending prices → Result: Pass.
+Test Case 5: Place order → Expected: order enters queue → Result: Pass.
+Test Case 6: Process queue → Expected: earliest order processed → Result: Pass.
+Test Case 7: Pop completed stack → Expected: latest completion returned → Result: Pass.
+Test Case 8: Calculate bill → Expected: correct total → Result: Pass.
+Test Case 9: Occupy table → Expected: table becomes unavailable → Result: Pass.
+Test Case 10: Release table → Expected: table becomes available → Result: Pass.
+
+
+31. ERROR HANDLING
+The system should prevent invalid input from crashing the program. Common errors include entering text where an integer is expected, entering a negative quantity, selecting an unknown food ID, attempting to process an empty queue, or attempting to pop an empty stack.
+Java exception handling can be used to catch invalid input. In a console application, input validation should be performed before modifying data structures.
+For example, quantity must satisfy quantity > 0. A food ID should exist in the menu before it is added to an order. The billing method should handle an empty order clearly.
+Good error handling improves reliability and provides a better user experience.
+
+
+32. COMPLEXITY ANALYSIS
+Let n be the number of menu items.
+Linear search: O(n) time, O(1) extra space.
+Binary search: O(log n) time after sorting, O(1) iterative space.
+Bubble sort: O(n²) worst-case time.
+Insertion sort: O(n²) worst-case time.
+Merge sort: O(n log n) time and O(n) auxiliary space.
+Queue enqueue/dequeue: O(1) for linked implementation.
+Stack push/pop: O(1).
+Displaying all menu items: O(n).
+Complexity analysis explains why different structures and algorithms are selected. The goal is not only to make a program work, but also to understand how its performance changes as data size increases.
+Operation	Time	Space
+Linear Search	O(n)	O(1)
+Binary Search	O(log n)	O(1)
+Bubble Sort	O(n²)	O(1)
+Merge Sort	O(n log n)	O(n)
+Queue enqueue	O(1)	O(1)
+Stack push/pop	O(1)	O(1)
+
+
+33. ALGORITHM – PLACE ORDER
+Step 1: Start.
+Step 2: Display available menu items.
+Step 3: Read customer information.
+Step 4: Create a new Order object.
+Step 5: Read food ID.
+Step 6: Search the menu.
+Step 7: If food is not found, display an error and repeat.
+Step 8: Read quantity.
+Step 9: Validate quantity.
+Step 10: Add food and quantity to order.
+Step 11: Ask whether another item is required.
+Step 12: If yes, repeat from Step 5.
+Step 13: Add order to the pending queue.
+Step 14: Display order ID.
+Step 15: Stop.
+
+
+34. ALGORITHM – PROCESS ORDER
+Step 1: Start.
+Step 2: Check whether the pending queue is empty.
+Step 3: If empty, display “No pending orders”.
+Step 4: Otherwise remove the front order.
+Step 5: Display the order details.
+Step 6: Change status to PREPARING.
+Step 7: Simulate completion.
+Step 8: Change status to COMPLETED.
+Step 9: Push the order ID onto the completed stack.
+Step 10: Display confirmation.
+Step 11: Stop.
+This algorithm demonstrates FIFO behavior in the queue and LIFO behavior when completed order IDs are stored in the stack.
+
+
+35. ALGORITHM – BILL CALCULATION
+Step 1: Start.
+Step 2: Set subtotal = 0.
+Step 3: For each ordered item, calculate price × quantity.
+Step 4: Add the result to subtotal.
+Step 5: Calculate tax using the configured tax rate.
+Step 6: Calculate discount if applicable.
+Step 7: Calculate final amount.
+Step 8: Display item-wise amounts.
+Step 9: Display subtotal, tax, discount, and final total.
+Step 10: Stop.
+This procedure is deterministic: for the same order, tax rate, and discount rate, the calculation produces the same result.
+
+
+36. FLOWCHART DESCRIPTION
+A flowchart for the system can be drawn using the following sequence:
+START
+  ↓
+Display Main Menu
+  ↓
+Read Choice
+  ↓
+Is Choice Valid?
+  ├── No → Display Error → Main Menu
+  └── Yes
+        ↓
+Execute Selected Module
+        ↓
+Display Result
+        ↓
+Exit?
+  ├── No → Main Menu
+  └── Yes → END
+For a college report, this flow can be converted into a diagram using standard flowchart symbols: oval for Start/End, rectangle for processing, parallelogram for input/output, and diamond for decisions.
+
+
+37. DFD DESCRIPTION
+Level-0 data flow representation:
+Customer → Restaurant System → Order Information
+Restaurant Staff → Restaurant System → Menu/Table/Order Updates
+Restaurant System → Bill → Customer
+Restaurant System → Kitchen Queue → Kitchen Staff
+Level-1 processes can be divided into:
+1. Manage Menu
+2. Manage Customer
+3. Manage Order
+4. Process Queue
+5. Manage Tables
+6. Generate Bill
+7. Generate Reports
+The DFD emphasizes how information moves through the system and helps explain the project to evaluators.
+
+
+38. UML CLASS DIAGRAM DESCRIPTION
+The UML class diagram should contain the following classes:
+FoodItem
+- id: int
+- name: String
+- category: String
+- price: double
+Customer
+- customerId: int
+- name: String
+- phone: String
+Order
+- orderId: int
+- customer: Customer
+- items: List<FoodItem>
+- quantities: List<Integer>
+- status: String
+Table
+- tableNumber: int
+- capacity: int
+- occupied: boolean
+RestaurantManager
+- menu: List<FoodItem>
+- pendingOrders: Queue<Order>
+- completedOrders: Stack<Integer>
+Main
+- main(String[] args)
+Relationships: Customer has Orders; Order contains FoodItems; RestaurantManager manages all major collections.
+
+
+39. ADVANTAGES
+The proposed system has several advantages:
+• Simple menu-driven operation.
+• Reduces manual calculation.
+• Provides structured data storage.
+• Demonstrates practical DSA usage.
+• Supports searching and sorting.
+• Queue provides orderly order processing.
+• Stack provides recent-operation tracking.
+• Object-oriented classes improve maintainability.
+• Modular methods make debugging easier.
+• The design can be expanded into a database application.
+From an academic perspective, the greatest advantage is that several Java and DSA concepts are demonstrated in one integrated project.
+
+
+40. LIMITATIONS
+The basic console implementation has limitations. Data may be lost when the program terminates if no database is connected. There is no multi-user authentication, network communication, online payment integration, printer integration, or real-time kitchen display.
+The console interface is suitable for learning but not as convenient as a graphical or web application. Using double for currency is acceptable for demonstration but not ideal for financial production software.
+The system also assumes that users enter mostly valid data. A production system would require stronger validation, logging, security controls, database transactions, concurrency management, and backup mechanisms.
+
+
+41. FUTURE ENHANCEMENTS
+Possible future improvements include:
+• MySQL or PostgreSQL database integration using JDBC.
+• JavaFX graphical user interface.
+• Login and role-based access for manager, cashier, and kitchen staff.
+• Online table reservation.
+• Digital menu and QR ordering.
+• Online payment gateway.
+• Inventory management.
+• Automatic low-stock alerts.
+• Sales analytics and charts.
+• Customer loyalty points.
+• Receipt printing.
+• REST API and mobile application integration.
+• Cloud deployment.
+These enhancements can transform the academic prototype into a more complete restaurant information system.
+
+
+42. SECURITY CONSIDERATIONS
+A production restaurant application should protect employee accounts and customer information. Passwords should never be stored as plain text. Access should be restricted according to user roles.
+Input validation is also a security requirement. Database queries should use prepared statements to reduce SQL injection risk. Logs should avoid unnecessary exposure of sensitive information.
+The academic console version does not implement full security because its primary purpose is learning Java and DSA. Nevertheless, understanding these requirements is important when moving from a classroom prototype to a real software system.
+
+
+43. CONCLUSION
+The Restaurant Management System demonstrates how Java programming and Data Structures and Algorithms can be combined to solve a practical problem. The system organizes menu items, customers, orders, tables, and billing information through object-oriented classes.
+The project shows that data structures are not only theoretical concepts. A queue can model kitchen order processing, a stack can model recent activities, dynamic lists can store menu records, and searching and sorting algorithms can improve information handling.
+The project therefore provides a strong foundation for students learning Java, DSA, object-oriented programming, algorithms, and software design. With database and graphical-interface enhancements, the same logical foundation can be developed into a more advanced restaurant management application.
+
+
+44. VIVA QUESTIONS AND ANSWERS
+Q1. Why is Java used?
+A: Java provides object-oriented programming, portability, collections, and exception handling.
+Q2. Why is a queue used for orders?
+A: A queue follows FIFO, which matches the normal sequence of pending order processing.
+Q3. Why is a stack used?
+A: A stack follows LIFO and can store recent completed operations.
+Q4. What is linear search?
+A: It checks elements sequentially until the target is found.
+Q5. What is binary search?
+A: It repeatedly divides a sorted search range into two halves.
+Q6. What is the complexity of merge sort?
+A: O(n log n) time.
+Q7. What is encapsulation?
+A: Bundling data and methods inside a class and controlling access to the data.
+Q8. Why use ArrayList?
+A: It provides dynamic-size indexed storage and convenient Java collection methods.
+Q9. What is FIFO?
+A: First In, First Out.
+Q10. What is LIFO?
+A: Last In, First Out.
+
+
+45. APPENDIX – FULL DEMONSTRATION CODE
+Below is a compact complete demonstration program suitable for Eclipse or another Java IDE. It avoids external libraries and shows menu management, searching, sorting, queue processing, stack usage, and billing.
+import java.util.*;
+
+public class RestaurantDemo {
+    static class Food {
+        int id; String name; double price;
+        Food(int id, String name, double price) {
+            this.id=id; this.name=name; this.price=price;
+        }
+    }
+
+    static ArrayList<Food> menu = new ArrayList<>();
+    static Queue<String> orderQueue = new LinkedList<>();
+    static Stack<String> history = new Stack<>();
+
+    static Food search(int id) {
+        for (Food f : menu)
+            if (f.id == id) return f;
+        return null;
+    }
+
+    static void sortByPrice() {
+        menu.sort(Comparator.comparingDouble(f -> f.price));
+    }
+
+    public static void main(String[] args) {
+        menu.add(new Food(1, "Idly", 40));
+        menu.add(new Food(2, "Dosa", 80));
+        menu.add(new Food(3, "Biryani", 160));
+
+        System.out.println("MENU");
+        for (Food f : menu)
+            System.out.println(f.id + " " + f.name + " " + f.price);
+
+        Food f = search(2);
+        System.out.println("Search result: " + f.name);
+
+        orderQueue.offer("Order-101");
+        orderQueue.offer("Order-102");
+        System.out.println("Processing: " + orderQueue.poll());
+
+        history.push("Order-101 completed");
+        System.out.println("Recent action: " + history.peek());
+
+        sortByPrice();
+        System.out.println("Sorted menu:");
+        for (Food x : menu)
+            System.out.println(x.name + " " + x.price);
+    }
+}
+

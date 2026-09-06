@@ -1,0 +1,270 @@
+public class RestaurantDemo {
+    static class Food {
+        int id; String name; double price;
+        Food(int id, String name, double price) {
+            this.id=id; this.name=name; this.price=price;
+        }
+    }
+
+    static ArrayList<Food> menu = new ArrayList<>();
+    static Queue<String> orderQueue = new LinkedList<>();
+    static Stack<String> history = new Stack<>();
+
+    static Food search(int id) {
+        for (Food f : menu)
+            if (f.id == id) return f;
+        return null;
+    }
+
+    static void sortByPrice() {
+        menu.sort(Comparator.comparingDouble(f -> f.price));
+    }
+
+    public static void main(String[] args) {
+        menu.add(new Food(1, "Idly", 40));
+        menu.add(new Food(2, "Dosa", 80));
+        menu.add(new Food(3, "Biryani", 160));
+
+        System.out.println("MENU");
+        for (Food f : menu)
+            System.out.println(f.id + " " + f.name + " " + f.price);
+
+        Food f = search(2);
+        System.out.println("Search result: " + f.name);
+
+        orderQueue.offer("Order-101");
+        orderQueue.offer("Order-102");
+        System.out.println("Processing: " + orderQueue.poll());
+
+        history.push("Order-101 completed");
+        System.out.println("Recent action: " + history.peek());
+
+        sortByPrice();
+        System.out.println("Sorted menu:");
+        for (Food x : menu)
+            System.out.println(x.name + " " + x.price);
+    }
+}
+import java.util.*;
+
+class FoodItem {
+    int id;
+    String name;
+    String category;
+    double price;
+
+    FoodItem(int id, String name, String category, double price) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+    }
+
+    public String toString() {
+        return id + "  " + name + "  " + category + "  " + price;
+    }
+}
+
+class Order {
+    int orderId;
+    String customer;
+    ArrayList<FoodItem> items = new ArrayList<>();
+    ArrayList<Integer> quantities = new ArrayList<>();
+    String status = "PENDING";
+
+    Order(int orderId, String customer) {
+        this.orderId = orderId;
+        this.customer = customer;
+    }
+
+    void addItem(FoodItem item, int quantity) {
+        items.add(item);
+        quantities.add(quantity);
+    }
+
+    double total() {
+        double sum = 0;
+        for (int i = 0; i < items.size(); i++)
+            sum += items.get(i).price * quantities.get(i);
+        return sum;
+    }
+}
+class RestaurantManager {
+    ArrayList<FoodItem> menu = new ArrayList<>();
+    Queue<Order> pendingOrders = new LinkedList<>();
+    Stack<Integer> completedOrders = new Stack<>();
+    int nextOrderId = 101;
+
+    void addFood(FoodItem item) {
+        menu.add(item);
+    }
+
+    void displayMenu() {
+        System.out.println("ID   NAME             CATEGORY       PRICE");
+        for (FoodItem f : menu)
+            System.out.printf("%-4d %-16s %-14s %.2f%n",
+                    f.id, f.name, f.category, f.price);
+    }
+
+    FoodItem searchById(int id) {
+        for (FoodItem f : menu)
+            if (f.id == id) return f;
+        return null;
+    }
+
+    FoodItem searchByName(String name) {
+        for (FoodItem f : menu)
+            if (f.name.equalsIgnoreCase(name)) return f;
+        return null;
+    }
+
+    void sortByPrice() {
+        menu.sort(Comparator.comparingDouble(f -> f.price));
+    }
+
+    Order createOrder(String customer) {
+        Order o = new Order(nextOrderId++, customer);
+        pendingOrders.offer(o);
+        return o;
+    }
+
+    void processNextOrder() {
+        if (pendingOrders.isEmpty()) {
+            System.out.println("No pending orders.");
+            return;
+        }
+        Order o = pendingOrders.poll();
+        o.status = "COMPLETED";
+        completedOrders.push(o.orderId);
+        System.out.println("Processed Order: " + o.orderId);
+    }
+
+    void displayPending() {
+        for (Order o : pendingOrders)
+            System.out.println(o.orderId + " - " + o.customer);
+    }
+
+    double bill(Order o, double taxRate, double discount) {
+        double subtotal = o.total();
+        return subtotal + subtotal * taxRate / 100 - discount;
+    }
+}
+
+public class RestaurantManagementSystem {
+    public static void main(String[] args) {
+        RestaurantManager r = new RestaurantManager();
+
+        r.addFood(new FoodItem(1, "Idly", "Breakfast", 40));
+        r.addFood(new FoodItem(2, "Masala Dosa", "Breakfast", 80));
+        r.addFood(new FoodItem(3, "Veg Biryani", "Main Course", 160));
+        r.addFood(new FoodItem(4, "Paneer Curry", "Main Course", 180));
+        r.addFood(new FoodItem(5, "Fresh Lime", "Beverage", 50));
+
+        System.out.println("RESTAURANT MANAGEMENT SYSTEM");
+        r.displayMenu();
+
+        FoodItem f = r.searchByName("Veg Biryani");
+        if (f != null)
+            System.out.println("Found: " + f.name + " - " + f.price);
+
+        Order o = r.createOrder("Rahul");
+        o.addItem(r.searchById(2), 2);
+        o.addItem(r.searchById(5), 1);
+
+        System.out.println("Order total: " + o.total());
+        System.out.println("Final bill: " + r.bill(o, 5, 0));
+
+        r.processNextOrder();
+        System.out.println("Last completed order: " + r.completedOrders.peek());
+    }
+}
+
+
+ SAMPLE OUTPUT – MAIN MENU
+
+================ RESTAURANT MANAGEMENT SYSTEM ================
+1. Display Menu
+2. Add Food Item
+3. Search Food
+4. Sort Menu by Price
+5. Place Order
+6. Process Next Order
+7. Display Pending Orders
+8. Display Completed Orders
+9. Calculate Bill
+10. Exit
+===============================================================
+Enter your choice: 1
+
+--------------- MENU ----------------
+ID   NAME             CATEGORY       PRICE
+1    Idly             Breakfast      40.00
+2    Masala Dosa      Breakfast      80.00
+3    Veg Biryani      Main Course   160.00
+4    Paneer Curry     Main Course   180.00
+5    Fresh Lime       Beverage       50.00
+--------------------------------------
+
+
+
+
+SAMPLE OUTPUT – SEARCH AND SORT
+
+Enter food name: Biryani
+Food Found:
+ID: 3
+Name: Veg Biryani
+Category: Main Course
+Price: ₹160.00
+
+After sorting by price:
+Idly          ₹40.00
+Fresh Lime    ₹50.00
+Masala Dosa   ₹80.00
+Veg Biryani   ₹160.00
+Paneer Curry  ₹180.00
+
+The output shows that searching locates the requested record and sorting changes the display order without changing the actual item information.
+
+
+SAMPLE OUTPUT – ORDER AND QUEUE
+
+Enter customer name: Rahul
+Enter food ID: 2
+Enter quantity: 2
+Order created successfully.
+Order ID: 101
+Order added to pending queue.
+
+Pending Orders:
+Front -> [101] -> [102] -> [103] <- Rear
+
+Processing next order...
+Order 101 is now being prepared.
+Order 101 completed successfully.
+
+Completed Stack:
+Top -> 101
+
+
+SAMPLE OUTPUT – BILL
+
+================ BILL ================
+Customer: Rahul
+Order ID: 101
+
+Item             Qty     Amount
+Masala Dosa       2      ₹160.00
+Fresh Lime        1       ₹50.00
+----------------------------------------
+Subtotal                  ₹210.00
+Tax (5%)                   ₹10.50
+Discount                    ₹0.00
+----------------------------------------
+TOTAL                     ₹220.50
+========================================
+Thank you for visiting!
+
+
+
+
